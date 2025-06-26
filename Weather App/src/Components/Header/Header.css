@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header .header-title {
+  font-size: 3rem;
+  font-weight: 500;
+  color: whitesmoke;
+}
+.header .header-date {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: whitesmoke;
+}

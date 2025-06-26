@@ -1,0 +1,17 @@
+@import "../../Settings/setting";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .header-title {
+    font-size: $font-2xl;
+    font-weight: 500;
+    color: whitesmoke;
+  }
+  .header-date {
+    font-size: $font-lg;
+    font-weight: 400;
+    color: whitesmoke;
+  }
+}

@@ -1,7 +1,7 @@
 // src/api/fetchCombinedWeather.js
 import axios from "axios";
 
-const API_KEY = "808310fe99e2c9590dc4a5cb4544a210";
+const API_KEY = "56ae57bca9b19f7c168805d439d75e48";
 
 export const fetchWeatherData = async (city) => {
   try {
@@ -29,10 +29,26 @@ export const fetchWeatherData = async (city) => {
       }
     );
 
+    //fetch lat and lan
+    const coord = await axios.get(
+      "http://api.openweathermap.org/geo/1.0/direct",
+      {
+        params: {
+          q: city,
+          limit: 1,
+          appid: API_KEY,
+        },
+      }
+    );
+    const location = coord.data[0];
+
     // 3️⃣ Combine and return
     return {
       city: currentRes.data.name,
       country: currentRes.data.sys.country,
+      lat: location?.lat,
+      lon: location?.lon,
+      state: location?.state,
       current: {
         temp: currentRes.data.main.temp,
         feelsLike: currentRes.data.main.feels_like,

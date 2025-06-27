@@ -1,0 +1,60 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hour {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.hourly-forecast {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  margin-top: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+.hourly-forecast::-webkit-scrollbar {
+  height: 6px;
+}
+.hourly-forecast::-webkit-scrollbar-track {
+  background: transparent;
+}
+.hourly-forecast::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+}
+.hourly-forecast .hour-block {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: inline-block;
+  width: 70px;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  text-align: center;
+  color: #e0e0e0;
+  font-size: 1.5rem;
+}
+.hourly-forecast .hour-block .hour {
+  font-size: 0.75rem;
+}
+.hourly-forecast .hour-block .hour-temp {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.hourly-forecast .hour-block .hour-icon {
+  width: 45px;
+  aspect-ratio: 1/1;
+}

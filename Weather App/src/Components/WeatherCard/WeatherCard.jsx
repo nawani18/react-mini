@@ -2,7 +2,6 @@ import "./WeatherCard.scss";
 
 const WeatherCard = (props) => {
   const { city, country, current } = props.props;
-  console.log(current);
 
   const currentDate = new Date();
   const day = currentDate.toLocaleDateString("en-US", { weekday: "long" });

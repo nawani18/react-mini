@@ -1,0 +1,8 @@
+@import "../../Settings/setting.scss";
+
+.card-left-2 {
+  width: 100%;
+  flex: 1;
+  padding: 1rem 2rem;
+  @include glass-card;
+}

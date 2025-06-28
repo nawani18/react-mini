@@ -15,7 +15,6 @@ const Weather = () => {
       const data1 = await fetchWeatherData(cityName);
       toast.success(`Weather data for ${data1.city} fetched successfully!`);
       setdata(data1);
-      console.log(cityName);
     } catch {
       console.log("Error fetching weather data");
     }

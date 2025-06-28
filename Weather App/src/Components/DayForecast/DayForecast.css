@@ -1,0 +1,91 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.daily-forecast-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.daily-forecast-container .forecast-heading {
+  font-size: var(--font-lg);
+  font-weight: 600;
+  color: var(--font-primary);
+  padding-left: 0.25rem;
+}
+.daily-forecast-container .daily-forecast {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
+}
+.daily-forecast-container .daily-forecast .daily-card {
+  min-width: 100px;
+  padding: 0.5rem;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--font-md);
+}
+.daily-forecast-container .daily-forecast .daily-card .day {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.daily-forecast-container .daily-forecast .daily-card .weather-icon {
+  width: 48px;
+  height: 48px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.daily-forecast-container .daily-forecast .daily-card .temps {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .daily-forecast-container {
+    gap: 0.6rem;
+  }
+  .daily-forecast-container .forecast-heading {
+    font-size: var(--font-md);
+  }
+  .daily-forecast-container .daily-forecast {
+    gap: 0.6rem;
+    padding-bottom: 0.4rem;
+  }
+  .daily-forecast-container .daily-forecast .daily-card {
+    min-width: 80px;
+    padding: 0.4rem;
+    border-radius: 12px;
+    gap: 0.3rem;
+    font-size: var(--font-sm);
+  }
+  .daily-forecast-container .daily-forecast .daily-card .day {
+    font-size: 0.8rem;
+  }
+  .daily-forecast-container .daily-forecast .daily-card .weather-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .daily-forecast-container .daily-forecast .daily-card .temps {
+    font-size: 0.75rem;
+  }
+}

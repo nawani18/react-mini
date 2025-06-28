@@ -1,17 +1,44 @@
 @import "../../Settings/setting";
 
 .header {
+  width: 100%;
+  padding: 0 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
   .header-title {
-    font-size: $font-2xl;
-    font-weight: 500;
-    color: whitesmoke;
+    font-size: $font-xl;
+    font-weight: 600;
+    color: var(--font-primary);
   }
+
   .header-date {
     font-size: $font-lg;
-    font-weight: 400;
-    color: whitesmoke;
+    font-weight: 600;
+    color: var(--font-secondary);
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    padding: 0.75rem 1rem;
+    text-align: left;
+
+    .header-title {
+      font-size: $font-lg;
+    }
+
+    .header-date {
+      font-size: $font-md;
+    }
   }
 }

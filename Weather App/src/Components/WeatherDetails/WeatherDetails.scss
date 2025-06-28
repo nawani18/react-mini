@@ -1,0 +1,222 @@
+@import "../../Settings/setting.scss";
+// Variables
+$primary-bg: linear-gradient(
+  135deg,
+  rgba(255, 255, 255, 0.12) 0%,
+  rgba(255, 255, 255, 0.06) 100%
+);
+$card-bg: rgba(255, 255, 255, 0.08);
+$card-bg-hover: rgba(255, 255, 255, 0.12);
+$border-color: rgba(255, 255, 255, 0.15);
+$text-primary: rgba(255, 255, 255, 0.95);
+$text-secondary: rgba(255, 255, 255, 0.7);
+$text-muted: rgba(255, 255, 255, 0.6);
+$icon-bg: rgba(255, 255, 255, 0.1);
+$shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+$shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.16);
+
+// Mixins
+@mixin glassmorphism {
+  background: $primary-bg;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid $border-color;
+}
+
+@mixin card-hover {
+  transform: translateY(-3px);
+  box-shadow: $shadow-hover;
+  background: $card-bg-hover;
+}
+
+// Main component
+.weather-details {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: $text-primary;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 27px;
+    grid-template-areas:
+      "humidity humidity"
+      "wind wind"
+      "visibility max-temp"
+      "min-temp sunrise"
+      "sunset pressure";
+  }
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50px;
+  }
+}
+
+// Detail cards
+.detail-card {
+  @include glass-card;
+  border-radius: 14px;
+  padding: 17px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    @include card-hover;
+  }
+
+  // Grid positioning
+  &:nth-child(3) {
+    grid-area: visibility;
+  }
+  &:nth-child(4) {
+    grid-area: max-temp;
+  }
+  &:nth-child(5) {
+    grid-area: min-temp;
+  }
+  &:nth-child(6) {
+    grid-area: sunrise;
+  }
+  &:nth-child(7) {
+    grid-area: sunset;
+  }
+  &:nth-child(8) {
+    grid-area: pressure;
+  }
+
+  &__icon {
+    background: $icon-bg;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    min-height: 50px;
+    transition: all 0.3s ease;
+
+    // Icon color variations
+    &--humidity {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+    }
+
+    &--visibility {
+      background: rgba(16, 185, 129, 0.15);
+      color: #6ee7b7;
+    }
+
+    &--pressure {
+      background: rgba(139, 92, 246, 0.15);
+      color: #a78bfa;
+    }
+
+    &--wind {
+      background: rgba(6, 182, 212, 0.15);
+      color: #67e8f9;
+    }
+
+    &--direction {
+      background: rgba(14, 165, 233, 0.15);
+      color: #7dd3fc;
+    }
+
+    &--gust {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+    }
+
+    &--sunrise {
+      background: rgba(251, 146, 60, 0.15);
+      color: #fdba74;
+    }
+
+    &--sunset {
+      background: rgba(251, 113, 133, 0.15);
+      color: #fb7185;
+    }
+
+    &--max-temp {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+    }
+
+    &--min-temp {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  &__label {
+    font-size: $font-md;
+    color: $font-primary;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__value {
+    font-size: $font-sm;
+    font-weight: 500;
+    color: $font-secondary;
+    letter-spacing: -0.3px;
+  }
+
+  &:hover &__icon {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 768px) {
+  .weather-details {
+    &__grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      grid-template-areas: none;
+    }
+  }
+
+  .detail-card {
+    flex-direction: row;
+    padding: 14px;
+    gap: 14px;
+
+    &__icon {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 8px;
+    }
+
+    &__label {
+      font-size: $font-sm;
+    }
+
+    &__value {
+      font-size: 0.8rem;
+    }
+  }
+}

@@ -14,7 +14,6 @@ const Temperture = () => {
     hour12: true,
   });
 
-  console.log(city, country, current);
   return (
     <div className="card-left-1">
       <div className="card-left-1-right">

@@ -5,7 +5,6 @@ import "./HourForecast.scss";
 const HourForecast = () => {
   const { data } = useContext(weatherdata);
   const { forecast } = data;
-  console.log(data);
   const current = { Hourly: [] };
   const eachDay = forecast.map((val) => {
     const time = new Date(val.dt * 1000).toLocaleTimeString("en-US", {
@@ -18,10 +17,10 @@ const HourForecast = () => {
       icon: val.weather[0].icon,
     });
   });
-  console.log(current);
 
   return (
     <div className="weather-hour">
+      <h2 className="forecast-heading">Hourly Forecast</h2>
       <div className="hourly-forecast">
         {current.Hourly.slice(0, 40).map((item, index) => (
           <div className="hour-block" key={index}>

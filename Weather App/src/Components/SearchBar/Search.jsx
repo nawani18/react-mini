@@ -15,16 +15,17 @@ const Search = ({ onSearch }) => {
   return (
     <form onSubmit={handleSubmit(SubmitHandler)}>
       <div className="search">
-        <input
-          className="search-input"
-          {...register("City")}
-          type="text"
-          placeholder="Search..."
-        />
-        <button type="submit" className="search-button">
-          {" "}
-          Search
-        </button>
+        <div className="search-box">
+          <input
+            className="search-input"
+            {...register("City")}
+            type="text"
+            placeholder="Search..."
+          />
+          <button type="submit" className="search-button">
+            Search
+          </button>
+        </div>
       </div>
     </form>
   );

@@ -2,7 +2,7 @@
 
 .weather-card {
   width: 100%;
-  height: calc(100vh - 200px);
+  height: calc(100vh - 150px);
   margin-top: 1rem;
   display: flex;
   flex-direction: row;
@@ -21,4 +21,22 @@
 .weather-card-right {
   width: 40%; // Reserved empty space
   height: 100%;
+}
+
+@media (max-width: 768px) {
+  .weather-card {
+    flex-direction: column;
+    height: auto;
+    gap: 1rem;
+  }
+
+  .weather-card-left,
+  .weather-card-right {
+    width: 100%;
+    height: auto;
+  }
+
+  .weather-card-left {
+    gap: 0.8rem;
+  }
 }

@@ -5,7 +5,12 @@
   height: auto;
   position: relative;
 }
-
+.forecast-heading {
+  font-size: var(--font-lg);
+  font-weight: 600;
+  color: var(--font-primary);
+  padding-left: 0.25rem;
+}
 .hourly-forecast {
   width: 100%;
   overflow-x: auto;
@@ -51,6 +56,35 @@
     .hour-icon {
       width: 45px;
       aspect-ratio: 1/1;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .forecast-heading {
+    font-size: var(--font-md);
+  }
+
+  .hourly-forecast {
+    padding-bottom: 0.5rem;
+
+    .hour-block {
+      width: 60px;
+      padding: 0.4rem;
+      margin-right: 0.4rem;
+      font-size: $font-md;
+
+      .hour {
+        font-size: 0.7rem;
+      }
+
+      .hour-temp {
+        font-size: 1rem;
+      }
+
+      .hour-icon {
+        width: 36px;
+      }
     }
   }
 }

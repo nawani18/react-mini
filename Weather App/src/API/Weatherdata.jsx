@@ -2,6 +2,7 @@
 import axios from "axios";
 
 const API_KEY = "56ae57bca9b19f7c168805d439d75e48";
+const API_KEY2 = "00a5ec0776d04ee5a2bdc4614d6b5e67";
 
 export const fetchWeatherData = async (city) => {
   try {
@@ -42,6 +43,19 @@ export const fetchWeatherData = async (city) => {
     );
     const location = coord.data[0];
 
+    const { lat, lon } = coord;
+
+    const forecastDay = await axios.get(
+      "https://api.weatherbit.io/v2.0/forecast/daily",
+      {
+        params: {
+          city: city,
+          key: API_KEY2,
+          day: 10,
+        },
+      }
+    );
+
     // 3️⃣ Combine and return
     return {
       city: currentRes.data.name,
@@ -55,9 +69,17 @@ export const fetchWeatherData = async (city) => {
         humidity: currentRes.data.main.humidity,
         pressure: currentRes.data.main.pressure,
         windSpeed: currentRes.data.wind.speed,
+        deg: currentRes.data.wind.deg,
+        gust: currentRes.data.wind.gust,
         condition: currentRes.data.weather[0].description,
         icon: currentRes.data.weather[0].icon,
+        max: currentRes.data.main.temp_max,
+        min: currentRes.data.main.temp_min,
+        visible: currentRes.data.visibility,
+        sunrise: currentRes.data.sys.sunrise,
+        sunset: currentRes.data.sys.sunset,
       },
+      daily: forecastDay.data,
       forecast: forecastRes.data.list, // Array of 3-hourly data
     };
   } catch (error) {

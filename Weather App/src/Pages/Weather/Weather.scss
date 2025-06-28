@@ -28,5 +28,26 @@
   color: wheat;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .weather-page {
+    padding: 0.5rem;
+    overflow: scroll;
+
+    .weather__image {
+      width: 100%;
+      height: 100%;
+      filter: blur(4px);
+      transform: scale(1.05);
+    }
+  }
+
+  .content {
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    align-items: center;
+    text-align: center;
+  }
 }
